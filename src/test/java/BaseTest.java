@@ -20,11 +20,10 @@ public class BaseTest {
     }
 
 
-//    @AfterAll
-//    public void tearDown(){
-//        driver.quit();
-//        System.out.println("Test Tamamlandı");
-//    }
+    @AfterAll
+    public void tearDown(){
+        System.out.println("Test Tamamlandı");
+    }
 
 
 }

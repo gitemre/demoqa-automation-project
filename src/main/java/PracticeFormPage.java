@@ -2,9 +2,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-public class PracticeFormPage {
+public class PracticeFormPage extends BasePage{
 
-    private WebDriver driver;
     private final By name = By.id("firstName");
     private final By lastName = By.id("lastName");
     private final By email = By.id("userEmail");
@@ -13,7 +12,7 @@ public class PracticeFormPage {
 
 
     public PracticeFormPage(WebDriver driver){
-        this.driver = driver;
+        super(driver);
         genderSection = new GenderSection(driver);
     }
 

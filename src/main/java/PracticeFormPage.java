@@ -4,51 +4,44 @@ import org.openqa.selenium.WebElement;
 
 public class PracticeFormPage extends BasePage{
 
-    private final By name = By.id("firstName");
-    private final By lastName = By.id("lastName");
-    private final By email = By.id("userEmail");
+    private final By nameLocator = By.id("firstName");
+    private final By lastNameLocator = By.id("lastName");
+    private final By emailLocator = By.id("userEmail");
 
     private GenderSection genderSection;
 
 
     public PracticeFormPage(WebDriver driver){
         super(driver);
+        driver.get(baseUrl.concat("automation-practice-form"));
         genderSection = new GenderSection(driver);
     }
 
     public GenderSection genderSection(){
         return this.genderSection;
     }
-    public void setName(String nameAsString){
-        WebElement nameSpace = driver.findElement(name);
-        nameSpace.click();
-        nameSpace.sendKeys(nameAsString);
+
+    public void setName(String name){
+        type(nameLocator,name);
     }
-    public void setlastName(String lastNameAsString){
-        WebElement nameSpace = driver.findElement(lastName);
-        nameSpace.click();
-        nameSpace.sendKeys(lastNameAsString);
+    public void setlastName(String lastName){
+        type(lastNameLocator,lastName);
 
     }
-    public void setEmail(String emailAsString){
-        WebElement nameSpace = driver.findElement(email);
-        nameSpace.click();
-        nameSpace.sendKeys(emailAsString);
+    public void setEmail(String email){
+        type(emailLocator,email);
     }
 
     public String getName(){
-        WebElement nameSpace = driver.findElement(name);
-        return nameSpace.getAttribute("value");
+       return find(nameLocator).getAttribute("value");
     }
 
     public String getLastname(){
-        WebElement lastnameSpace = driver.findElement(lastName);
-        return  lastnameSpace.getAttribute("value");
+        return find(lastNameLocator).getAttribute("value");
     }
 
     public String getEmail(){
-        WebElement emailSpace = driver.findElement(email);
-        return  emailSpace.getAttribute("value");
+        return find(emailLocator).getAttribute("value");
     }
 
 }

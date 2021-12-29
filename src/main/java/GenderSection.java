@@ -1,34 +1,34 @@
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class GenderSection {
+public class GenderSection extends BasePage {
 
-    private WebDriver driver;
-    private final By maleRadioLabel = new By.ByCssSelector("label[for='gender-radio-1']");
-    private final By femaleRadioLabel = new By.ByCssSelector("label[for='gender-radio-2']");
-    private final By otherRadioLabel = new By.ByCssSelector("label[for='gender-radio-3']");
 
-    private final By maleRadioButton = new By.ById("gender-radio-1");
-    private final By femaleRadioButton = new By.ById("gender-radio-2");
-    private final By otherRadioButton = new By.ById("gender-radio-3");
+    private final By maleLabelLocator = new By.ByCssSelector("label[for='gender-radio-1']");
+    private final By femaleLabelLocator = new By.ByCssSelector("label[for='gender-radio-2']");
+    private final By otherLabelLocator = new By.ByCssSelector("label[for='gender-radio-3']");
+
+    private final By maleRadioButtonLocator = new By.ById("gender-radio-1");
+    private final By femaleRadioButtonLocator = new By.ById("gender-radio-2");
+    private final By otherRadioButtonLocator = new By.ById("gender-radio-3");
 
     public enum Genders {MALE, FEMALE, OTHER}
 
     public GenderSection(WebDriver driver) {
-        this.driver = driver;
+        super(driver);
 
     }
 
     public void clickRadioButton(Genders gender) {
         switch (gender) {
             case FEMALE:
-                driver.findElement(femaleRadioLabel).click();
+                click(femaleLabelLocator);
                 break;
             case MALE:
-                driver.findElement(maleRadioLabel).click();
+                click(maleLabelLocator);
                 break;
             case OTHER:
-                driver.findElement(otherRadioLabel).click();
+                click(otherLabelLocator);
                 break;
         }
     }
@@ -37,13 +37,13 @@ public class GenderSection {
         boolean isChecked = false;
         switch (gender) {
             case FEMALE:
-                isChecked = driver.findElement(femaleRadioButton).isSelected();
+                isChecked = isSelected(femaleRadioButtonLocator);
                 break;
             case MALE:
-                isChecked = driver.findElement(maleRadioButton).isSelected();
+                isChecked = isSelected(maleRadioButtonLocator);
                 break;
             case OTHER:
-                isChecked = driver.findElement(otherRadioButton).isSelected();
+                isChecked = isSelected(otherRadioButtonLocator);
                 break;
 
         }
